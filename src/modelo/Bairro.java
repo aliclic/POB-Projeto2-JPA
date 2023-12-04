@@ -11,24 +11,26 @@ import jakarta.persistence.OneToMany;
 public class Bairro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String nomeBairro;
+	private int id;
+	
+    private String nome;
 	
     @OneToMany(mappedBy="bairro", 
     		cascade={CascadeType.PERSIST, CascadeType.MERGE})
     private ArrayList<Endereco> enderecos;
     
     public Bairro() {}
-    public Bairro(String nomeBairro){
-        this.nomeBairro = nomeBairro;
+    public Bairro(String nome){
+        this.nome = nome;
         this.enderecos = new ArrayList<>();
     }
 
     public String getNome() {
-        return nomeBairro;
+        return nome;
     }
 
     public void setNome(String nomeBairro) {
-        this.nomeBairro = nomeBairro;
+        this.nome = nomeBairro;
     }
     
     public void adicionarEndereco(Endereco endereco) {
@@ -45,6 +47,6 @@ public class Bairro {
     
     @Override
     public String toString() {
-        return "Bairro: " + nomeBairro + ", " + "enderecos: " + enderecos;
-        }
+        return "Bairro: " + nome + ", " + "enderecos: " + enderecos;
+    }
 }
