@@ -16,7 +16,7 @@ public class CadastrarUsuario {
 			Fachada.inicializar();
 
 			System.out.println("cadastrando usuario...");
-			Fachada.cadastrarUsuario("fausto", "1234");
+			//Fachada.cadastrarUsuario("fausto", "1234");
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

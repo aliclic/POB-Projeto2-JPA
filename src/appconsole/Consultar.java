@@ -1,7 +1,6 @@
 package appconsole;
 
 import modelo.Bairro;
-import modelo.Endereco;
 import modelo.Pessoa;
 import regras_negocio.Fachada;
 
@@ -16,7 +15,7 @@ public class Consultar {
 				System.out.println(a);
 
 
-			System.out.println("\nPessoas  que  moram no bairro Centro");
+			System.out.println("\nPessoas que moram no bairro Centro");
 			for(Pessoa b : Fachada.getPessoasByBairro("Centro"))
 				System.out.println(b);
 

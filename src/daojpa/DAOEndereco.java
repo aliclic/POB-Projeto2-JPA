@@ -25,14 +25,5 @@ public class DAOEndereco  extends DAO<Endereco>{
 		return  q.getResultList();
 	}
 
-	//  consultas
-	
-	// lista de endereços cujo bairro tem o nome especificado
-	public List<Endereco> getEnderecosByBairro(String nomeBairro) {
-        TypedQuery<Endereco> q = manager.createQuery(
-            "select e from Endereco e where e.bairro.nome = :nomeBairro", Endereco.class);
-        q.setParameter("nomeBairro", nomeBairro);
-        return q.getResultList();
-    }
 	
 }

@@ -1,12 +1,9 @@
-
-
 package appconsole;
 
-import daodb4o.Util;
+
 import modelo.Bairro;
 import modelo.Endereco;
 import modelo.Pessoa;
-import modelo.Usuario;
 import regras_negocio.Fachada;
 
 public class Listar {
@@ -14,15 +11,15 @@ public class Listar {
 	public Listar() {
 		try {
 			Fachada.inicializar();
-			System.out.println("\n---listagem de bair:");
+			System.out.println("\n---listagem de bairros:");
 			for(Bairro b: Fachada.listarBairros())
 				System.out.println(b);
 
-			System.out.println("\n---listagem de end:");
+			System.out.println("\n---listagem de endereços:");
 			for(Endereco e: Fachada.listarEnderecos())
 				System.out.println(e);
-
-			System.out.println("\n---listagem de pes:");
+			
+			System.out.println("\n---listagem de pessoas:");
 			for(Pessoa p: Fachada.listarPessoas())
 				System.out.println(p);
 
@@ -30,7 +27,7 @@ public class Listar {
 			System.out.println(e.getMessage());
 		}
 
-		Util.desconectar();
+		Fachada.finalizar();
 		System.out.println("\nfim do programa !");
 	}
 
