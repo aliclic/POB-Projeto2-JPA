@@ -23,13 +23,13 @@ public class DAOPessoa extends DAO<Pessoa>{
 	}
 
 	public List<Pessoa> readAll(){
-		TypedQuery<Pessoa> q = manager.createQuery("select p from Pessoa order by p.id", Pessoa.class);
+		TypedQuery<Pessoa> q = manager.createQuery("select p from Pessoa p order by p.id", Pessoa.class);
 		return  q.getResultList();
 	}
 
 	//  consultas
 	
-	// lista de pessoa que possuem um determinado grau de amizade
+	// quais as pessoas com grau de amizade X
 	public List<Pessoa> consultaPessoasPorGrauAmizade(int grauAmizade) {
 		TypedQuery<Pessoa> q = manager.createQuery
 				("select p from Pessoa p where p.grauAmizade = :x", Pessoa.class);
@@ -37,7 +37,7 @@ public class DAOPessoa extends DAO<Pessoa>{
 		return q.getResultList();
 	}
 
-	// lista de pessoas que possuem um determinado bairro atribuido
+	// quais as pessoas que moram no bairro de nome X
 	public List<Pessoa> getPessoasByBairro(String nomeBairro) {
 		TypedQuery<Pessoa> q = manager.createQuery
 				("select p from Pessoa p where p.endereco.bairro.nome = :x", Pessoa.class);

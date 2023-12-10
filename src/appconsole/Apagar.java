@@ -7,7 +7,7 @@ public class Apagar {
 		try {
 			Fachada.inicializar();
 			Fachada.excluirPessoa("Gustavo");
-			System.out.println("pessoa excluido");
+			System.out.println("pessoa excluída");
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

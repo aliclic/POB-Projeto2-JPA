@@ -1,13 +1,11 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+@Entity
 public class Bairro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,14 +13,12 @@ public class Bairro {
 	
     private String nome;
 	
-    @OneToMany(mappedBy="bairro", 
-    		cascade={CascadeType.PERSIST, CascadeType.MERGE})
-    private ArrayList<Endereco> enderecos;
+    @OneToMany(mappedBy = "bairro", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Endereco> enderecos = new ArrayList<>();
     
     public Bairro() {}
     public Bairro(String nome){
         this.nome = nome;
-        this.enderecos = new ArrayList<>();
     }
 
     public String getNome() {
@@ -34,14 +30,14 @@ public class Bairro {
     }
     
     public void adicionarEndereco(Endereco endereco) {
-    	this.enderecos.add(endereco);
+        this.enderecos.add(endereco);
     }
     
     public void removerEndereco(int id) {
-    	enderecos.remove(id);
+        enderecos.remove(id);
     }
     
-    public ArrayList<Endereco> getEnderecos() {
+    public List<Endereco> getEnderecos() {
     	return enderecos;
     }
     

@@ -27,10 +27,10 @@ public class DAOBairro extends DAO<Bairro>{
 	
 	// consultas
 	
-	//  todos os bairros que têm mais de uma entrada (n) na lista de endereços
+	//  quais os bairros que tem mais de N endereços
 	public List<Bairro> getBairroWithMostAddresses(int n) {
         TypedQuery<Bairro> query = manager.createQuery(
-            "select b from Bairro b whire SIZE(b.enderecos) > :n", Bairro.class);
+            "select b from Bairro b left join fetch b.enderecos where SIZE(b.enderecos) > :n", Bairro.class);
         query.setParameter("n", n);
         return query.getResultList();
     }

@@ -1,11 +1,6 @@
 package modelo;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Endereco {
@@ -18,6 +13,7 @@ public class Endereco {
     private int numero;
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "bairro_id")
     private Bairro bairro;
 
     public Endereco() {}
@@ -61,6 +57,6 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereço: " + rua + ", " + numero + ", " + bairro;
+        return "Endereço: " + rua + ", " + numero + ", " + bairro.getNome();
     }
 }

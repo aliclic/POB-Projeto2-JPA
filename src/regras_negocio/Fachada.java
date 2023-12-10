@@ -63,9 +63,9 @@ public class Fachada {
 
 		Endereco endereco = new Endereco(rua, numero, bairro);
 
+		endereco.setBairro(bairro);
 		bairro.adicionarEndereco(endereco);
-		daobairro.update(bairro);
-		daoendereco.create(endereco);
+		daoendereco.update(endereco);
 		DAO.commit();
 		return endereco;
 	}
