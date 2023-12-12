@@ -34,7 +34,10 @@ public class Bairro {
     }
     
     public void removerEndereco(int id) {
-        enderecos.remove(id);
+        for(Endereco e : enderecos) {
+            if (e.getId() == id)
+                enderecos.remove(e);
+        }
     }
     
     public List<Endereco> getEnderecos() {

@@ -9,7 +9,6 @@ import daojpa.DAOPessoa;
 import modelo.Bairro;
 import modelo.Endereco;
 import modelo.Pessoa;
-//import modelo.Usuario;
 
 public class Fachada {
 	private Fachada() {}
@@ -17,8 +16,6 @@ public class Fachada {
 	private static DAOEndereco daoendereco = new DAOEndereco();   
 	private static DAOBairro daobairro = new DAOBairro(); 
 	private static DAOPessoa daopessoa = new DAOPessoa(); 
-	//private static DAOUsuario daousuario = new DAOUsuario(); 
-	//public static Usuario logado;	//contem o objeto Usuario logado em TelaLogin.java
 
 	public static void inicializar() {
 		DAO.open();
@@ -42,17 +39,28 @@ public class Fachada {
 
 	public static void excluirBairro(String nomeBairro) throws Exception {
 		DAO.begin();
-		Bairro bairro = daobairro.read(nomeBairro);
-		if (bairro == null) {
-			throw new Exception("Bairro não encontrado: " + nomeBairro);
-		}
+	    Bairro bairro = daobairro.read(nomeBairro);
 
-		for (Endereco endereco : bairro.getEnderecos()) {
-			daoendereco.delete(endereco);
-		}
+	    if (bairro == null) {
+	        throw new Exception("Bairro não encontrado: " + nomeBairro);
+	    }
 
-		daobairro.delete(bairro);
-		DAO.commit();
+	    // Remove os endereços associados ao bairro
+	    for (Endereco endereco : bairro.getEnderecos()) {
+	        // Remove o endereço da pessoa, se aplicável
+	        for (Pessoa pessoa : daopessoa.listarPorEndereco(endereco.getId())) {
+	            pessoa.setEndereco(null);
+	            daopessoa.update(pessoa);
+	        }
+
+	        // Remove o endereço
+	        daoendereco.delete(endereco);
+	    }
+
+	    // Remove o bairro
+	    daobairro.delete(bairro);
+
+	    DAO.commit();
 	}
 
 	public static Endereco cadastrarEndereco(String rua, int numero, String nomeBairro) throws Exception {
@@ -84,9 +92,15 @@ public class Fachada {
 		}
 
 		bairro.removerEndereco(enderecoId);
-		daoendereco.delete(endereco);
 		daobairro.update(bairro);
-		DAO.commit();
+
+		for (Pessoa pessoa : daopessoa.listarPorEndereco(enderecoId)) {
+	        pessoa.setEndereco(null);
+	        daopessoa.update(pessoa);
+	    }
+
+	    daoendereco.delete(endereco);
+	    DAO.commit();
 	}
 
 	public static Pessoa cadastrarPessoa(String nome, int idEndereco, int grauAmizade, String DtNascimento) throws Exception {
@@ -138,13 +152,6 @@ public class Fachada {
 		return resultados;
 	}
 
-//	public static List<Usuario>  listarUsuarios() {
-//		DAO.begin();
-//		List<Usuario> resultados =  daousuario.readAll();
-//		DAO.commit();
-//		return resultados;
-//	}
-
 
 	public static void trocarEndereco(String nomePessoa, int idEndereco) throws Exception {
 		DAO.begin();
@@ -195,24 +202,4 @@ public class Fachada {
 	}
 
 	
-	//------------------Usuario------------------------------------
-//	public static Usuario cadastrarUsuario(String nome, String senha) throws Exception {
-//		DAO.begin();
-//		Usuario usu = daousuario.read(nome);
-//		if (usu!=null)
-//			throw new Exception("Usuario ja cadastrado:" + nome);
-//		usu = new Usuario(nome, senha);
-//
-//		daousuario.create(usu);
-//		DAO.commit();
-//		return usu;
-//	}
-//	public static Usuario localizarUsuario(String nome, String senha) {
-//		Usuario usu = daousuario.read(nome);
-//		if (usu==null)
-//			return null;
-//		if (! usu.getSenha().equals(senha))
-//			return null;
-//		return usu;
-//	}
 }

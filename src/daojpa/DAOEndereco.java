@@ -25,5 +25,13 @@ public class DAOEndereco  extends DAO<Endereco>{
 		return  q.getResultList();
 	}
 
-	
+	public List<Endereco> listarPorBairro(String nomeBairro) {
+		TypedQuery<Endereco> query = manager.createQuery(
+				"select e from Endereco e where e.bairro.nome = :nomeBairro", Endereco.class);
+		query.setParameter("nomeBairro", nomeBairro);
+		return query.getResultList();
+	}
+
+
+
 }

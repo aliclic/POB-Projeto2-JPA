@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -18,7 +19,8 @@ public class Pessoa {
 	@Convert(converter=LowerToUpperConverter.class)
     private String nome;
 	
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToOne
+	@JoinColumn(name = "endereco_id")
     private Endereco endereco;
     
     private int grauAmizade;
@@ -68,7 +70,7 @@ public class Pessoa {
     @Override
     public String toString() {
         return "Pessoa: " + nome + "\n" +
-                "" + endereco + "\n" +
+                "Endereco: " + endereco + "\n" +
                 "Grau de Amizade: " + grauAmizade + "\n" +
                 "Data de Nascimento: " + dtNascimento;
     }

@@ -26,6 +26,13 @@ public class DAOPessoa extends DAO<Pessoa>{
 		TypedQuery<Pessoa> q = manager.createQuery("select p from Pessoa p order by p.id", Pessoa.class);
 		return  q.getResultList();
 	}
+	
+	public List<Pessoa> listarPorEndereco(int enderecoId) {
+        TypedQuery<Pessoa> query = manager.createQuery(
+                "SELECT p FROM Pessoa p WHERE p.endereco.id = :enderecoId", Pessoa.class);
+        query.setParameter("enderecoId", enderecoId);
+        return query.getResultList();
+    }
 
 	//  consultas
 	

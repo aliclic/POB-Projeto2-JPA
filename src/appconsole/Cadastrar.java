@@ -29,7 +29,7 @@ public class Cadastrar {
 			System.out.println("cadastrando pessoa...");
 			Fachada.cadastrarPessoa("Gustavo", 1, 3, "03/10/2002");
 			Fachada.cadastrarPessoa("Gustavo2", 2, 2, "03/10/2002");
-			Fachada.cadastrarPessoa("Alic", 4, 3, "09/10/2003");
+			Fachada.cadastrarPessoa("Alic", 4, 2, "09/10/2003");
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
