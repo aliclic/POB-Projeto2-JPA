@@ -1,35 +1,28 @@
-20:12:14,795  INFO Util:25 - Util.conectar - lendo arquivo util.properties: 
-20:12:14,802  INFO Util:32 - sgbd => postgresql
-20:12:14,802  INFO Util:33 - banco => agenda
-20:12:14,802  INFO Util:34 - ip => localhost
-20:12:14,803  INFO Util:39 - configurando postgresql
-20:12:14,850 DEBUG logging:38 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
-20:12:15,113  INFO LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: hibernate-postgresql]
-20:12:15,264  INFO Version:44 - HHH000412: Hibernate ORM core version 6.3.1.Final
-20:12:15,374 DEBUG RegionFactoryInitiator:122 - Cannot default RegionFactory based on registered strategies as `[]` RegionFactory strategies were registered
-20:12:15,377  INFO RegionFactoryInitiator:50 - HHH000026: Second-level cache disabled
-20:12:15,993  WARN pooling:80 - HHH10001002: Using built-in connection pool (not intended for production use)
-20:12:16,009  INFO pooling:135 - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
-20:12:16,010  INFO pooling:157 - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/agenda]
-20:12:16,011  INFO pooling:166 - HHH10001001: Connection properties: {password=****, user=postgres}
-20:12:16,012  INFO pooling:170 - HHH10001003: Autocommit mode: false
-20:12:16,023  INFO pooling:366 - HHH10001115: Connection pool size: 20 (min=1)
-20:12:16,740  WARN deprecation:152 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-20:12:19,829  INFO JtaPlatformInitiator:58 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-20:12:19,909  INFO access:52 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@35bfa1bb] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-20:12:21,107 DEBUG SQL:135 - select b1_0.id,e1_0.bairro_id,e1_0.id,e1_0.numero,e1_0.rua,b1_0.nome from Bairro b1_0 left join Endereco e1_0 on b1_0.id=e1_0.bairro_id order by b1_0.nome
-20:12:21,279 DEBUG SQL:135 - select e1_0.id,e1_0.bairro_id,e1_0.numero,e1_0.rua from Endereco e1_0 order by e1_0.id
-20:12:21,303 DEBUG SQL:135 - select b1_0.id,b1_0.nome from Bairro b1_0 where b1_0.id=?
-20:12:21,305 TRACE bind:24 - binding parameter (1:INTEGER) <- [1]
-20:12:21,317 DEBUG SQL:135 - select b1_0.id,b1_0.nome from Bairro b1_0 where b1_0.id=?
-20:12:21,318 TRACE bind:24 - binding parameter (1:INTEGER) <- [2]
-20:12:21,321 DEBUG SQL:135 - select b1_0.id,b1_0.nome from Bairro b1_0 where b1_0.id=?
-20:12:21,322 TRACE bind:24 - binding parameter (1:INTEGER) <- [3]
-20:12:21,335 DEBUG SQL:135 - select p1_0.id,p1_0.dtNascimento,p1_0.endereco_id,p1_0.grauAmizade,p1_0.nome from Pessoa p1_0 order by p1_0.id
-20:12:21,342 DEBUG SQL:135 - select e1_0.id,b1_0.id,b1_0.nome,e1_0.numero,e1_0.rua from Endereco e1_0 left join Bairro b1_0 on b1_0.id=e1_0.bairro_id where e1_0.id=?
-20:12:21,343 TRACE bind:24 - binding parameter (1:INTEGER) <- [3]
-20:12:21,349 DEBUG SQL:135 - select e1_0.id,b1_0.id,b1_0.nome,e1_0.numero,e1_0.rua from Endereco e1_0 left join Bairro b1_0 on b1_0.id=e1_0.bairro_id where e1_0.id=?
-20:12:21,349 TRACE bind:24 - binding parameter (1:INTEGER) <- [2]
-20:12:21,352 DEBUG SQL:135 - select e1_0.id,b1_0.id,b1_0.nome,e1_0.numero,e1_0.rua from Endereco e1_0 left join Bairro b1_0 on b1_0.id=e1_0.bairro_id where e1_0.id=?
-20:12:21,353 TRACE bind:24 - binding parameter (1:INTEGER) <- [4]
-20:12:21,381  INFO pooling:601 - HHH10001008: Cleaning up connection pool [jdbc:postgresql://localhost:5432/agenda]
+21:18:33,540  INFO Util:25 - Util.conectar - lendo arquivo util.properties: 
+21:18:33,547  INFO Util:32 - sgbd => postgresql
+21:18:33,548  INFO Util:33 - banco => agenda
+21:18:33,548  INFO Util:34 - ip => localhost
+21:18:33,549  INFO Util:39 - configurando postgresql
+21:18:33,605 DEBUG logging:38 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+21:18:33,840  INFO LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: hibernate-postgresql]
+21:18:33,971  INFO Version:44 - HHH000412: Hibernate ORM core version 6.3.1.Final
+21:18:34,057 DEBUG RegionFactoryInitiator:122 - Cannot default RegionFactory based on registered strategies as `[]` RegionFactory strategies were registered
+21:18:34,060  INFO RegionFactoryInitiator:50 - HHH000026: Second-level cache disabled
+21:18:34,617  WARN pooling:80 - HHH10001002: Using built-in connection pool (not intended for production use)
+21:18:34,629  INFO pooling:135 - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+21:18:34,630  INFO pooling:157 - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/agenda]
+21:18:34,634  INFO pooling:166 - HHH10001001: Connection properties: {password=****, user=postgres}
+21:18:34,634  INFO pooling:170 - HHH10001003: Autocommit mode: false
+21:18:34,643  INFO pooling:366 - HHH10001115: Connection pool size: 20 (min=1)
+21:18:35,146  WARN deprecation:152 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+21:18:37,707  INFO JtaPlatformInitiator:58 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+21:18:37,751  INFO access:52 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5bf3d319] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+21:18:38,538 DEBUG SQL:135 - select b1_0.id,e1_0.bairro_id,e1_0.id,e1_0.numero,e1_0.rua,b1_0.nome from Bairro b1_0 left join Endereco e1_0 on b1_0.id=e1_0.bairro_id order by b1_0.nome
+21:18:44,047 DEBUG SQL:135 - select b1_0.id,b1_0.nome from Bairro b1_0 where b1_0.nome=?
+21:18:44,049 TRACE bind:24 - binding parameter (1:VARCHAR) <- [Centro]
+21:18:44,064 DEBUG SQL:135 - select e1_0.bairro_id,e1_0.id,e1_0.numero,e1_0.rua from Endereco e1_0 where e1_0.bairro_id=?
+21:18:44,065 TRACE bind:24 - binding parameter (1:INTEGER) <- [1]
+21:18:44,098 DEBUG SQL:135 - delete from Bairro where id=?
+21:18:44,099 TRACE bind:24 - binding parameter (1:INTEGER) <- [1]
+21:18:44,116 DEBUG SQL:135 - select b1_0.id,e1_0.bairro_id,e1_0.id,e1_0.numero,e1_0.rua,b1_0.nome from Bairro b1_0 left join Endereco e1_0 on b1_0.id=e1_0.bairro_id order by b1_0.nome
+21:18:45,368  INFO pooling:601 - HHH10001008: Cleaning up connection pool [jdbc:postgresql://localhost:5432/agenda]

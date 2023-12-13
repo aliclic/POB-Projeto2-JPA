@@ -183,8 +183,11 @@ public class Fachada {
 		return resultados;
 	}
 
-	public static List<Pessoa> getPessoasByBairro(String nomeBairro) {
+	public static List<Pessoa> getPessoasByBairro(String nomeBairro) throws Exception{
 		DAO.begin();
+		if(localizarBairro(nomeBairro) == null) {;
+			throw new Exception("Bairro não existe!");
+		}
 		List<Pessoa> resultados = daopessoa.getPessoasByBairro(nomeBairro);
 		DAO.commit();
 		return resultados;

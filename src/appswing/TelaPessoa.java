@@ -1,9 +1,3 @@
-/**********************************
- * IFPB - Curso Superior de Tec. em Sist. para Internet
- * POB - Persistencia de Objetos
- * Prof. Fausto Ayres
- *
- */
 package appswing;
 
 import java.awt.Color;
@@ -48,13 +42,8 @@ public class TelaPessoa {
 	private JLabel label_2;
 	private JTextField textField_2;
 	private JLabel label_5;
-	private JLabel label_6;
-	private JLabel label_7;
-	private JTextField textField_3;
 	private JLabel label_8;
 	private JTextField textField_4;
-	private JTextField textField_5;
-	private JLabel label_9;
 
 	/**
 	 * Launch the application.
@@ -141,7 +130,7 @@ public class TelaPessoa {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if(textField.getText().isEmpty() || textField_1.getText().isEmpty() || textField_2.getText().isEmpty()
-							|| textField_3.getText().isEmpty() || textField_4.getText().isEmpty() || textField_5.getText().isEmpty()) {
+							 || textField_4.getText().isEmpty()) {
 						label.setText("campo vazio");
 						return;
 					}
@@ -149,11 +138,9 @@ public class TelaPessoa {
 					String grau = textField.getText();
 					int grauAmizade = Integer.parseInt(grau);
 					String data = textField_2.getText();
-					String rua = textField_3.getText();
-					String num = textField_4.getText();
-					int numero = Integer.parseInt(num);
-					String bairro = textField_5.getText();
-					Fachada.cadastrarPessoa(nome, rua, numero, bairro, grauAmizade, data);
+					String id = textField_4.getText();
+					int idEndereco = Integer.parseInt(id);
+					Fachada.cadastrarPessoa(nome, idEndereco, grauAmizade, data);
 					label.setText("cliente criado: "+ nome);
 					listagem();
 				}
@@ -208,7 +195,7 @@ public class TelaPessoa {
 			}
 		});
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		button_2.setBounds(515, 200, 171, 23);
+		button_2.setBounds(520, 230, 171, 23);
 		frame.getContentPane().add(button_2);
 		
 		label_1 = new JLabel("Grau de amizade:");
@@ -241,46 +228,17 @@ public class TelaPessoa {
 		label_5.setBounds(21, 269, 80, 13);
 		frame.getContentPane().add(label_5);
 		
-		label_6 = new JLabel("Rua:");
-		label_6.setHorizontalAlignment(SwingConstants.LEFT);
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_6.setBounds(275, 232, 63, 14);
-		frame.getContentPane().add(label_6);
-		
-		label_7 = new JLabel("Endereco");
-		label_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_7.setBounds(322, 205, 75, 13);
-		frame.getContentPane().add(label_7);
-		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Dialog", Font.PLAIN, 12));
-		textField_3.setColumns(10);
-		textField_3.setBounds(322, 229, 168, 20);
-		frame.getContentPane().add(textField_3);
-		
-		label_8 = new JLabel("Numero:");
+		label_8 = new JLabel("ID do Endereco:");
 		label_8.setHorizontalAlignment(SwingConstants.LEFT);
 		label_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_8.setBounds(275, 267, 63, 14);
+		label_8.setBounds(253, 253, 122, 14);
 		frame.getContentPane().add(label_8);
 		
 		textField_4 = new JTextField();
 		textField_4.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_4.setColumns(10);
-		textField_4.setBounds(332, 264, 99, 20);
+		textField_4.setBounds(356, 250, 99, 20);
 		frame.getContentPane().add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setFont(new Font("Dialog", Font.PLAIN, 12));
-		textField_5.setColumns(10);
-		textField_5.setBounds(322, 291, 168, 20);
-		frame.getContentPane().add(textField_5);
-		
-		label_9 = new JLabel("Bairro:");
-		label_9.setHorizontalAlignment(SwingConstants.LEFT);
-		label_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_9.setBounds(275, 289, 63, 14);
-		frame.getContentPane().add(label_9);
 	}
 
 	public void listagem() {

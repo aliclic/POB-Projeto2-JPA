@@ -1,9 +1,3 @@
-/**********************************
- * IFPB - Curso Superior de Tec. em Sist. para Internet
- * POB - Persistencia de Objetos
- * Prof. Fausto Ayres
- *
- */
 package appswing;
 
 import java.awt.Color;
@@ -80,7 +74,7 @@ public class TelaConsulta {
 
 		frame.setResizable(false);
 		frame.setTitle("Consulta");
-		frame.setBounds(100, 100, 729, 385);
+		frame.setBounds(100, 100, 729, 375);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.addWindowListener(new WindowAdapter() {
@@ -120,11 +114,11 @@ public class TelaConsulta {
 
 		label = new JLabel("");		//label de mensagem
 		label.setForeground(Color.BLUE);
-		label.setBounds(21, 321, 688, 14);
+		label.setBounds(21, 214, 688, 37);
 		frame.getContentPane().add(label);
 
 		label_4 = new JLabel("resultados:");
-		label_4.setBounds(21, 190, 431, 14);
+		label_4.setBounds(21, 200, 452, 23);
 		frame.getContentPane().add(label_4);
 
 		button = new JButton("Consultar");
@@ -135,20 +129,27 @@ public class TelaConsulta {
 				if(index<0)
 					label_4.setText("consulta nao selecionada");
 				else
-					switch(index) {
-					case 0: 
-						List<Bairro> resultado1 = Fachada.getBairroWithMostAddresses(1);
-						listagemBairro(resultado1);
-						break;
-					case 1: 
-						List<Pessoa> resultado2 = Fachada.getPessoasByBairro("Centro");
-						listagemPessoa(resultado2);
-						break;
-					case 2: 
-						List<Pessoa> resultado3 = Fachada.consultaPessoasPorGrauAmizade(2);
-						listagemPessoa(resultado3);
-						break;
-
+					try {
+						switch(index) {
+						case 0: 
+							int n  = Integer.parseInt(JOptionPane.showInputDialog("digite um número"));
+							List<Bairro> resultado1 = Fachada.getBairroWithMostAddresses(n);
+							listagemBairro(resultado1);
+							break;							
+						case 1:
+							String bairro = JOptionPane.showInputDialog("digite um bairro");
+							List<Pessoa> resultado2 = Fachada.getPessoasByBairro(bairro);
+							listagemPessoa(resultado2);
+							break;							
+						case 2:
+							int grau  = Integer.parseInt(JOptionPane.showInputDialog("digite um número"));
+							List<Pessoa> resultado3 = Fachada.consultaPessoasPorGrauAmizade(grau);
+							listagemPessoa(resultado3);
+							break;								
+						}
+						
+					} catch (Exception ex) {
+						JOptionPane.showMessageDialog(button, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);;
 					}
 
 			}
@@ -158,7 +159,7 @@ public class TelaConsulta {
 
 		comboBox = new JComboBox();
 		comboBox.setToolTipText("selecione a consulta");
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bairro com mais de 1 endereco", "Pessoas  que  moram no bairro Centro", "Pessoas com grau de amizade 2"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bairro com mais de x endereco", "Pessoas  que  moram no bairro x", "Pessoas com grau de amizade x"}));
 		comboBox.setBounds(21, 10, 513, 22);
 		frame.getContentPane().add(comboBox);
 	}
@@ -209,5 +210,4 @@ public class TelaConsulta {
 			label.setText(erro.getMessage());
 		}
 	}
-
 }

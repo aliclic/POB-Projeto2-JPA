@@ -125,13 +125,13 @@ public class TelaEndereco {
 		label_2 = new JLabel("Rua:");
 		label_2.setHorizontalAlignment(SwingConstants.LEFT);
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_2.setBounds(21, 269, 71, 14);
+		label_2.setBounds(23, 269, 52, 14);
 		frame.getContentPane().add(label_2);
 
 		textField = new JTextField();
 		textField.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField.setColumns(10);
-		textField.setBounds(54, 266, 195, 20);
+		textField.setBounds(85, 266, 195, 20);
 		frame.getContentPane().add(textField);
 
 		button_1 = new JButton("Criar novo endereco");
@@ -156,7 +156,7 @@ public class TelaEndereco {
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		button_1.setBounds(537, 265, 153, 23);
+		button_1.setBounds(496, 265, 153, 23);
 		frame.getContentPane().add(button_1);
 
 		button = new JButton("Listar");
@@ -172,13 +172,13 @@ public class TelaEndereco {
 		label_3 = new JLabel("Numero:");
 		label_3.setHorizontalAlignment(SwingConstants.LEFT);
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		label_3.setBounds(21, 293, 63, 14);
+		label_3.setBounds(303, 269, 63, 14);
 		frame.getContentPane().add(label_3);
 
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Dialog", Font.PLAIN, 12));
 		textField_1.setColumns(10);
-		textField_1.setBounds(94, 291, 89, 20);
+		textField_1.setBounds(363, 266, 89, 20);
 		frame.getContentPane().add(textField_1);
 
 		button_2 = new JButton("Apagar selecionado");
@@ -208,11 +208,11 @@ public class TelaEndereco {
 		label_1 = new JLabel("Nome do bairro:");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		label_1.setHorizontalAlignment(SwingConstants.LEFT);
-		label_1.setBounds(259, 270, 101, 13);
+		label_1.setBounds(21, 298, 101, 13);
 		frame.getContentPane().add(label_1);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(358, 268, 169, 19);
+		textField_2.setBounds(119, 292, 169, 19);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 	}
