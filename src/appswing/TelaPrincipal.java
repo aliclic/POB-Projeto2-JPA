@@ -14,7 +14,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.SwingConstants;
 
-import regras_negocio.Fachada;
 
 public class TelaPrincipal {
 	private JFrame frame;

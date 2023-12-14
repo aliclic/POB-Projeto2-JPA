@@ -113,6 +113,9 @@ public class Fachada {
 		if (endereco == null) {
 			throw new Exception("Endereço não encontrado com ID: " + idEndereco);
 		}
+		
+		if(grauAmizade <  1 || grauAmizade > 5)
+			throw new Exception("Grau de amizade deve ser um valor entre 0 e 5");
 
 		pessoa = new Pessoa(nome, endereco, grauAmizade, DtNascimento);
 		daopessoa.create(pessoa);

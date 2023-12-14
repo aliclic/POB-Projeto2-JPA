@@ -76,7 +76,7 @@ public class TelaPessoa {
 		frame.setModal(true);
 		
 		frame.setResizable(false);
-		frame.setTitle("Cliente");
+		frame.setTitle("Pessoa");
 		frame.setBounds(100, 100, 729, 385);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -141,7 +141,7 @@ public class TelaPessoa {
 					String id = textField_4.getText();
 					int idEndereco = Integer.parseInt(id);
 					Fachada.cadastrarPessoa(nome, idEndereco, grauAmizade, data);
-					label.setText("cliente criado: "+ nome);
+					label.setText("pessoa criada: "+ nome);
 					listagem();
 				}
 				catch(Exception ex) {

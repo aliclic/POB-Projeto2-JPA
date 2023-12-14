@@ -1,7 +1,6 @@
 package modelo;
 
 import daojpa.LowerToUpperConverter;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +16,7 @@ public class Pessoa {
 	private int id;
 	
 	@Convert(converter=LowerToUpperConverter.class)
-    private String nome;
+	private String nome;
 	
 	@OneToOne
 	@JoinColumn(name = "endereco_id")
@@ -33,6 +32,14 @@ public class Pessoa {
         this.endereco = endereco;
         this.grauAmizade = grauAmizade;
         this.dtNascimento = dtNascimento;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getNome() {
